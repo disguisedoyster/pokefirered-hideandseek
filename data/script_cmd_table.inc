@@ -138,7 +138,7 @@ gScriptCmdTable::
 	.4byte ScrCmd_pokemart                       @ 0x86
 	.4byte ScrCmd_pokemartdecoration             @ 0x87
 	.4byte ScrCmd_pokemartdecoration2            @ 0x88
-	.4byte ScrCmd_playslotmachine                @ 0x8
+	.4byte ScrCmd_playslotmachine                @ 0x89
 	.4byte ScrCmd_setberrytree                   @ 0x8a
 	.4byte ScrCmd_choosecontestmon               @ 0x8b
 	.4byte ScrCmd_startcontest                   @ 0x8c
@@ -214,6 +214,9 @@ gScriptCmdTable::
 	.4byte ScrCmd_setmonmetlocation              @ 0xd2
 	.4byte ScrCmd_getbraillestringwidth          @ 0xd3
 	.4byte ScrCmd_bufferitemnameplural           @ 0xd4
+	.4byte ScrCmd_setflagwithoffset              @ 0xd5
+	.4byte ScrCmd_clearflagwithoffset            @ 0xd6
+	.4byte ScrCmd_checkflagwithoffset            @ 0xd7
 
 gScriptCmdTableEnd::
 	.4byte ScrCmd_nop

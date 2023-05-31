@@ -572,6 +572,30 @@ bool8 ScrCmd_checkflag(struct ScriptContext * ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_setflagwithoffset(struct ScriptContext * ctx)
+{
+    u16 index = ScriptReadHalfword(ctx);
+    u16 offset = VarGet(ScriptReadHalfword(ctx));
+    FlagSet(index + offset);
+    return FALSE;
+}
+
+bool8 ScrCmd_clearflagwithoffset(struct ScriptContext * ctx)
+{
+    u16 index = ScriptReadHalfword(ctx);
+    u16 offset = VarGet(ScriptReadHalfword(ctx));
+    FlagClear(index + offset);
+    return FALSE;
+}
+
+bool8 ScrCmd_checkflagwithoffset(struct ScriptContext * ctx)
+{
+    u16 index = ScriptReadHalfword(ctx);
+    u16 offset = VarGet(ScriptReadHalfword(ctx));
+    ctx->comparisonResult = FlagGet(index + offset);
+    return FALSE;
+}
+
 bool8 ScrCmd_incrementgamestat(struct ScriptContext * ctx)
 {
     IncrementGameStat(ScriptReadByte(ctx));

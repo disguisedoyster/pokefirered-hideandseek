@@ -1633,6 +1633,27 @@
 	.2byte \quantity
 	.endm
 
+	@ Sets flag at some offset to TRUE.
+	.macro setflagwithoffset flag:req, value:req
+	.byte 0xd5
+	.2byte \flag
+	.2byte \value
+	.endm
+
+	@ Sets flag at some offset  to FALSE.
+	.macro clearflagwithoffset flag:req, value:req
+	.byte 0xd6
+	.2byte \flag
+	.2byte \value
+	.endm
+
+	@ Compares flag at some offset to TRUE and stores the result in comparisonResult to be used by goto_if, etc
+	@ See additional _if_unset and _if_set macros
+	.macro checkflagwithoffset flag:req, value:req
+	.byte  0xd7
+	.2byte \flag
+	.2byte \value
+	.endm
 
 @ Supplementary
 
@@ -1643,6 +1664,16 @@
 
 	.macro goto_if_set flag:req, dest:req
 	checkflag \flag
+	goto_if TRUE, \dest
+	.endm
+
+	.macro goto_if_unsetwithoffset flag:req, value:req, dest:req
+	checkflagwithoffset \flag, \value
+	goto_if FALSE, \dest
+	.endm
+
+	.macro goto_if_setwithoffset flag:req, value:req, dest:req
+	checkflagwithoffset \flag, \value
 	goto_if TRUE, \dest
 	.endm
 
@@ -1697,6 +1728,16 @@
 
 	.macro call_if_set flag:req, dest:req
 	checkflag \flag
+	call_if TRUE, \dest
+	.endm
+
+	.macro call_if_unsetwithoffset flag:req, value:req, dest:req
+	checkflagwithoffset \flag, \value
+	call_if FALSE, \dest
+	.endm
+
+	.macro call_if_setwithoffset flag:req, value:req, dest:req
+	checkflagwithoffset \flag, \value
 	call_if TRUE, \dest
 	.endm
 
