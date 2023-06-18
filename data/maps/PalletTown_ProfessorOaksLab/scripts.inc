@@ -688,8 +688,37 @@ PalletTown_ProfessorOaksLab_EventScript_ReceiveDexScene::
 	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 1
 	setvar VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE, 1
 	setvar VAR_MAP_SCENE_ROUTE22, 1
-	release
+    call PalletTown_ProfessorOaksLab_EventScript_OakGivesHM
+    release
 	end
+
+PalletTown_ProfessorOaksLab_EventScript_OakGivesHM::
+    msgbox PalletTown_ProfessorOaksLab_Text_OakGivesHM
+    goto_if_eq VAR_STARTER_MON, 0, PalletTown_ProfessorOaksLab_EventScript_OakGivesHM01
+    goto_if_eq VAR_STARTER_MON, 1, PalletTown_ProfessorOaksLab_EventScript_OakGivesHM02
+    goto_if_eq VAR_STARTER_MON, 2, PalletTown_ProfessorOaksLab_EventScript_OakGivesHM03
+    return
+
+PalletTown_ProfessorOaksLab_EventScript_OakGivesHM01::
+    giveitem_msg PalletTown_ProfessorOaksLab_Text_OakHandsOverHM, ITEM_HM01, 1
+    msgbox PalletTown_ProfessorOaksLab_Text_OakExplainsHM
+    setflag FLAG_BADGE02_GET
+    closemessage
+    return
+
+PalletTown_ProfessorOaksLab_EventScript_OakGivesHM02::
+    giveitem_msg PalletTown_ProfessorOaksLab_Text_OakHandsOverHM, ITEM_HM02, 1
+    msgbox PalletTown_ProfessorOaksLab_Text_OakExplainsHM
+    setflag FLAG_BADGE05_GET
+    closemessage
+    return
+
+PalletTown_ProfessorOaksLab_EventScript_OakGivesHM03::
+    giveitem_msg PalletTown_ProfessorOaksLab_Text_OakHandsOverHM, ITEM_HM03, 1
+    msgbox PalletTown_ProfessorOaksLab_Text_OakExplainsHM
+    setflag FLAG_BADGE03_GET
+    closemessage
+    return
 
 PalletTown_ProfessorOaksLab_EventScript_OakBringDexesOverNorth::
 	applymovement LOCALID_PROF_OAK, PalletTown_ProfessorOaksLab_Movement_OakBringDexesOver

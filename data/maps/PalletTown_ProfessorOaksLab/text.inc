@@ -355,3 +355,21 @@ PalletTown_ProfessorOaksLab_Text_RivalIllCompleteThePokedex::
     .string "ONE ISLAND first…\p"
     .string "Anyways, I'm outta here!$"
 
+PalletTown_ProfessorOaksLab_Text_OakGivesHM::
+    .string "OAK: By the way, I had something\n"
+    .string "else to give you both as well.$"
+
+PalletTown_ProfessorOaksLab_Text_OakHandsOverHM::
+    .string "{PLAYER} received an HM\n"
+    .string "from PROF. OAK!$"
+
+PalletTown_ProfessorOaksLab_Text_OakExplainsHM::
+    .string "Oak: You should be able to use\n"
+    .string "that to get around easier.\p"
+    .string "I've also pulled a couple of\n"
+    .string "strings to give you this too.$"
+
+PalletTown_ProfessorOaksLab_Text_OakRegrets::
+    .string "Oak: {RIVAL} really should have\n"
+    .string "waited for me to finish...$"
+
